@@ -1,6 +1,7 @@
 import React from "react";
 import { Theme, makeStyles, createStyles } from "@material-ui/core";
 import Puzzle from "./Puzzle";
+import PickerLine from "./PickerLine";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -14,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "antiquewhite",
+      backgroundColor: "#ffffff",
       borderBottom: "none",
       height: "100%"
     },
@@ -22,7 +23,8 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundColor: "cyan"
     },
     center: {
-      border: "1px solid black"
+      border: "1px solid black",
+      flexDirection: "column"
     },
     right: {
       backgroundColor: "cyan"
@@ -38,6 +40,7 @@ function Content() {
         <div className={`${classes.row} ${classes.left}`}>Left</div>
         <div className={`${classes.row} ${classes.center}`}>
           <Puzzle />
+          <PickerLine />
         </div>
         <div className={`${classes.row} ${classes.right}`}>Right</div>
       </div>
