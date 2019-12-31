@@ -1,8 +1,8 @@
-import { CHECKED, MouseActionTypes, HIGHLIGHT, SET_DIGIT } from "./ActionTypes";
-import { IBoardState, PuzzleType } from "./../Interfaces";
-import { PuzzleUtils } from "../PuzzleUtils";
+import { CHECKED, MouseActionTypes, HIGHLIGHT, SET_DIGIT } from './ActionTypes';
+import { BoardState, PuzzleType } from '../Interfaces';
+import { PuzzleUtils } from '../PuzzleUtils';
 
-const initialState: IBoardState = {
+const initialState: BoardState = {
   ident: {
     id: -1,
     digit: -1
@@ -24,7 +24,7 @@ const initialState: IBoardState = {
 export function BoardReducer(
   state = initialState,
   action: MouseActionTypes
-): IBoardState {
+): BoardState {
   switch (action.type) {
     case CHECKED:
       return {
@@ -32,26 +32,24 @@ export function BoardReducer(
         ident: action.payload
       };
     case HIGHLIGHT:
-      const uniqueArray = PuzzleUtils.getAllHighLighted(
-        state.puzzle,
-        action.payload
-      );
       return {
         ...state,
-        highlighted: uniqueArray
+        highlighted: PuzzleUtils.getAllHighLighted(
+          state.puzzle,
+          action.payload
+        )
       };
     case SET_DIGIT:
-      const newPuzzle = Object.assign([...state.puzzle], {
-        [action.payload.position.row]: Object.assign(
-          [...state.puzzle[action.payload.position.row]],
-          {
-            [action.payload.position.column]: action.payload.digit
-          }
-        )
-      }) as PuzzleType;
       return {
         ...state,
-        puzzle: newPuzzle
+        puzzle: Object.assign([...state.puzzle], {
+          [action.payload.position.row]: Object.assign(
+            [...state.puzzle[action.payload.position.row]],
+            {
+              [action.payload.position.column]: action.payload.digit
+            }
+          )
+        }) as PuzzleType
       };
     default:
       return state;

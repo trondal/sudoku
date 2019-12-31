@@ -1,10 +1,8 @@
 import {
   PuzzleType,
-  BlockType,
   SquareIdentifier,
-  PuzzlePosition
-} from "./Interfaces";
-import Puzzle from "./Puzzle";
+} from './Interfaces';
+
 
 export class PuzzleUtils {
   static idsByBlock: PuzzleType = [
@@ -72,32 +70,32 @@ export class PuzzleUtils {
   }
 
   static getBlockNumberById(id: number): number {
-    for (let i = 0; i < PuzzleUtils.idsByBlock.length; i++) {
+    for (let i = 0; i < PuzzleUtils.idsByBlock.length; i += 1) {
       const row = PuzzleUtils.idsByBlock[i];
-      for (let x = 0; x < row.length; x++) {
+      for (let x = 0; x < row.length; x += 1) {
         const value = row[x];
         if (value === id) {
           return i + 1;
         }
       }
     }
-    throw Error("number does not exist in array");
+    throw Error('number does not exist in array');
   }
 
   static getPositionById(id: number) {
-    for (let i = 0; i < PuzzleUtils.idsByBlock.length; i++) {
+    for (let i = 0; i < PuzzleUtils.idsByBlock.length; i+= 1) {
       const row = PuzzleUtils.idsByBlock[i];
-      for (let x = 0; x < row.length; x++) {
+      for (let x = 0; x < row.length; x+= 1) {
         const value = row[x];
         if (value === id) {
           return { row: i, column: x };
         }
       }
     }
-    throw Error("number does not exist in array");
+    throw Error('number does not exist in array');
   }
 
-  /*static getAllDigitsInBlock(puzzle: PuzzleType, index: number): BlockType {
+  /* static getAllDigitsInBlock(puzzle: PuzzleType, index: number): BlockType {
     return puzzle[index - 1];
   }
 
@@ -160,7 +158,7 @@ export class PuzzleUtils {
   }
 
   static transformPuzzle2Row(puzzle: PuzzleType): PuzzleType {
-    let bag: PuzzleType = [
+    const bag: PuzzleType = [
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -171,7 +169,7 @@ export class PuzzleUtils {
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
-    for (let index = 0; index < puzzle.length; index++) {
+    for (let index = 0; index < puzzle.length; index += 1) {
       const row = puzzle[index];
       const chunks = PuzzleUtils.chunkArray(row, 3);
       switch (index) {
@@ -220,13 +218,15 @@ export class PuzzleUtils {
           bag[7].splice(6, 9, ...chunks[1]);
           bag[8].splice(6, 9, ...chunks[2]);
           break;
+          default: 
+          throw RangeError;
       }
     }
     return bag;
   }
 
   static findIdsForSimilarDigit(puzzle: PuzzleType, digit: number) {
-    let positions: number[] = [];
+    const positions: number[] = [];
 
     if (digit === 0) {
       return positions;
@@ -234,8 +234,8 @@ export class PuzzleUtils {
 
     const transformedPuzzle = PuzzleUtils.transformPuzzle2Row(puzzle);
 
-    for (let i = 0; i < transformedPuzzle.length; i++) {
-      for (let x = 0; x < transformedPuzzle[i].length; x++) {
+    for (let i = 0; i < transformedPuzzle.length; i+= 1) {
+      for (let x = 0; x < transformedPuzzle[i].length; x+= 1) {
         if (transformedPuzzle[i][x] === digit) {
           positions.push(PuzzleUtils.idsByRow[i][x]);
         }
@@ -245,7 +245,7 @@ export class PuzzleUtils {
   }
 
   private static chunkArray(ary: number[], chunkSize: number): any {
-    var temp = [];
+    const temp = [];
     let chunks = [];
     for (let index = 0; index < ary.length; index += chunkSize) {
       chunks = ary.slice(index, index + chunkSize);

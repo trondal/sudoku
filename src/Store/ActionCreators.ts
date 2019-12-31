@@ -1,18 +1,18 @@
-import { CHECKED, MouseActionTypes, HIGHLIGHT, SET_DIGIT } from "./ActionTypes";
-import { PuzzlePosition } from "../Interfaces";
+import { CHECKED, MouseActionTypes, HIGHLIGHT, SET_DIGIT } from './ActionTypes';
+import { PuzzlePosition } from '../Interfaces';
 
 export function checkedAction(id: number, digit: number): MouseActionTypes {
   return {
     type: CHECKED,
     payload: {
-      id: id,
-      digit: digit
+      id,
+      digit
     }
   };
 }
 
 export function highlightAction(id: number, digit: number): MouseActionTypes {
-  return { type: HIGHLIGHT, payload: { id: id, digit: digit } };
+  return { type: HIGHLIGHT, payload: { id, digit } };
 }
 
 export function setDigitAction(
@@ -22,8 +22,8 @@ export function setDigitAction(
   return {
     type: SET_DIGIT,
     payload: {
-      position: position,
-      digit: digit
+      position,
+      digit
     }
   };
 }

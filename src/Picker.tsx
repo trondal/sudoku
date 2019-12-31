@@ -1,35 +1,34 @@
-import React from "react";
-import { makeStyles } from "@material-ui/styles";
-import { Theme, createStyles } from "@material-ui/core";
-import { SetDigitAction } from "./Store/ActionTypes";
-import { PuzzlePosition, IBoardState } from "./Interfaces";
-import { ISudukoState } from "./Store/configureStore";
-import { setDigitAction } from "./Store/ActionCreators";
-import { connect } from "react-redux";
-import { PuzzleUtils } from "./PuzzleUtils";
-import { StarRounded } from "@material-ui/icons";
+import React from 'react';
+import { makeStyles } from '@material-ui/styles';
+import { createStyles } from '@material-ui/core';
+import { ISudukoState } from './Store/configureStore';
+import { setDigitAction } from './Store/ActionCreators';
+import { connect } from 'react-redux';
+import { PuzzleUtils } from './PuzzleUtils';
+import { BoardState } from './Interfaces';
 
-const useStyles = makeStyles((theme: Theme) =>
+
+const useStyles = makeStyles(() =>
   createStyles({
     picker: {
-      width: "calc(100% / 9)",
-      borderTop: "1px solid black",
-      borderBottom: "1px solid black",
-      borderLeft: "1px solid black",
-      "&:last-of-type": {
-        borderRight: "1px solid black"
+      width: 'calc(100% / 9)',
+      borderTop: '1px solid black',
+      borderBottom: '1px solid black',
+      borderLeft: '1px solid black',
+      '&:last-of-type': {
+        borderRight: '1px solid black'
       },
-      boxSizing: "border-box",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
+      boxSizing: 'border-box',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
     },
     num: {
-      fontSize: "calc(1.8vw + 1.8vh + 0.8vmin)",
+      fontSize: 'calc(1.8vw + 1.8vh + 0.8vmin)',
       fontWeight: 300
     },
     highlight: {
-      backgroundColor: "#c4dbfb"
+      backgroundColor: '#c4dbfb'
     }
   })
 );
@@ -52,9 +51,8 @@ function Picker(props: IPickerProps) {
         props.setDigitAction(position, props.digit);
       }}
       className={`${classes.picker} ${
-        props.highlight ? classes.highlight : ""
-      }`}
-    >
+        props.highlight ? classes.highlight : ''
+      }`}>
       <div className={classes.num}>{props.digit}</div>
     </div>
   );
@@ -62,15 +60,13 @@ function Picker(props: IPickerProps) {
 
 const mapStateToProps = (
   store: ISudukoState
-): Pick<IBoardState, "puzzle" | "ident"> => {
-  return {
+): Pick<BoardState, 'puzzle' | 'ident'> => ({
     puzzle: store.board.puzzle,
     ident: store.board.ident
-  };
-};
+  });
 
 const mapDispatchToProps = {
-  setDigitAction: setDigitAction
+  setDigitAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Picker);

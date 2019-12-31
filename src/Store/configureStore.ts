@@ -1,8 +1,8 @@
-import { applyMiddleware, createStore, Store } from "redux";
-import thunkMiddleware from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { combineReducers } from "redux";
-import BoardReducer from "./BoardReducer";
+import { applyMiddleware, createStore, Store } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { combineReducers } from 'redux';
+import BoardReducer from './BoardReducer';
 
 const rootReducer = combineReducers({
   board: BoardReducer

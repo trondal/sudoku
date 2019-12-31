@@ -1,23 +1,22 @@
-import React from "react";
+import React from 'react';
 import {
   makeStyles,
-  Theme,
   createStyles,
   AppBar,
   Toolbar,
   IconButton
-} from "@material-ui/core";
-import { Undo, Save, Facebook, Twitter } from "@material-ui/icons";
+} from '@material-ui/core';
+import { Undo, Save, Facebook, Twitter } from '@material-ui/icons';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
-    //offset: theme.mixins.toolbar,
+    // offset: theme.mixins.toolbar,
     appBar: {
-      top: "auto",
+      top: 'auto',
       bottom: 0
     },
     toolbar: {
-      alignSelf: "center"
+      alignSelf: 'center'
     }
   })
 );
@@ -30,7 +29,7 @@ export default function Footer() {
       <AppBar position="sticky" color="primary" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <IconButton color="inherit" aria-label="">
-            <Undo></Undo>
+            <Undo />
           </IconButton>
           <IconButton color="inherit" aria-label="">
             <Save />

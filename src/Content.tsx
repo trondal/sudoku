@@ -1,33 +1,33 @@
-import React from "react";
-import { Theme, makeStyles, createStyles } from "@material-ui/core";
-import Puzzle from "./Puzzle";
-import PickerLine from "./PickerLine";
+import React from 'react';
+import { makeStyles, createStyles } from '@material-ui/core';
+import Puzzle from './Puzzle';
+import PickerLine from './PickerLine';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     box: {
-      display: "flex",
-      flex: "1 1 auto",
-      flexDirection: "row"
+      display: 'flex',
+      flex: '1 1 auto',
+      flexDirection: 'row'
     },
     row: {
-      flex: "1 1 auto",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: "#ffffff",
-      borderBottom: "none",
-      height: "100%"
+      flex: '1 1 auto',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#ffffff',
+      borderBottom: 'none',
+      height: '100%'
     },
     left: {
-      backgroundColor: "cyan"
+      backgroundColor: 'powderblue'
     },
     center: {
-      border: "1px solid black",
-      flexDirection: "column"
+      border: '1px solid black',
+      flexDirection: 'column'
     },
     right: {
-      backgroundColor: "cyan"
+      backgroundColor: 'powderblue'
     }
   })
 );

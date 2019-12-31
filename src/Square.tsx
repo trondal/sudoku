@@ -1,30 +1,30 @@
-import { createStyles, Theme, Tooltip } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
-import React from "react";
-import { connect } from "react-redux";
-import { IBoardState } from "./Interfaces";
-import { checkedAction, highlightAction } from "./Store/ActionCreators";
-import { ISudukoState } from "./Store/configureStore";
+import { createStyles, Tooltip } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
+import React from 'react';
+import { connect } from 'react-redux';
+import { BoardState } from './Interfaces';
+import { checkedAction, highlightAction } from './Store/ActionCreators';
+import { ISudukoState } from './Store/configureStore';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     square: {
-      width: "calc(100% / 3)",
-      height: "calc(100% / 3)",
-      border: "0.2px solid #bfc5d2",
-      boxSizing: "border-box",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
+      width: 'calc(100% / 3)',
+      height: 'calc(100% / 3)',
+      border: '0.2px solid #bfc5d2',
+      boxSizing: 'border-box',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
     },
     checked: {
-      backgroundColor: "#c4dbfb"
+      backgroundColor: '#c4dbfb'
     },
     highlight: {
-      backgroundColor: "#e2e6ec"
+      backgroundColor: '#e2e6ec'
     },
     num: {
-      fontSize: "calc(1.8vw + 1.8vh + 0.8vmin)",
+      fontSize: 'calc(1.8vw + 1.8vh + 0.8vmin)',
       fontWeight: 300
     }
   })
@@ -42,7 +42,7 @@ type ISquareProps = ReturnType<typeof mapStateToProps> &
 
 function Square(props: ISquareProps) {
   const classes: Record<
-    "square" | "checked" | "num" | "highlight",
+    'square' | 'checked' | 'num' | 'highlight',
     string
   > = useStyles();
 
@@ -53,14 +53,13 @@ function Square(props: ISquareProps) {
         props.highlightAction(props.id, props.digit);
       }}
       className={`${classes.square} ${
-        props.ident.id === props.id ? classes.checked : ""
-      } ${props.highlight ? classes.highlight : ""}
-        ${props.highlighted.includes(props.id) ? classes.highlight : ""}
-      `}
-    >
+        props.ident.id === props.id ? classes.checked : ''
+      } ${props.highlight ? classes.highlight : ''}
+        ${props.highlighted.includes(props.id) ? classes.highlight : ''}
+      `}>
       <Tooltip title={props.id} arrow>
         <div className={classes.num}>
-          {props.digit !== 0 ? props.digit : ""}
+          {props.digit !== 0 ? props.digit : ''}
         </div>
       </Tooltip>
     </div>
@@ -69,16 +68,14 @@ function Square(props: ISquareProps) {
 
 const mapStateToProps = (
   store: ISudukoState
-): Pick<IBoardState, "ident" | "highlighted"> => {
-  return {
+): Pick<BoardState, 'ident' | 'highlighted'> => ({
     ident: store.board.ident,
     highlighted: store.board.highlighted
-  };
-};
+  });
 
 const mapDispatchToProps = {
-  checkedAction: checkedAction,
-  highlightAction: highlightAction
+  checkedAction,
+  highlightAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Square);

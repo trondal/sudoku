@@ -1,23 +1,23 @@
-import React from "react";
-import Block from "./Block";
-import { makeStyles } from "@material-ui/styles";
-import { Theme, createStyles } from "@material-ui/core";
-import { connect } from "react-redux";
-import { BlockType, IBoardState } from "./Interfaces";
-import { ISudukoState } from "./Store/configureStore";
-import { checkedAction } from "./Store/ActionCreators";
+import React from 'react';
+import Block from './Block';
+import { makeStyles } from '@material-ui/styles';
+import { createStyles } from '@material-ui/core';
+import { connect } from 'react-redux';
+import { BlockType, BoardState } from './Interfaces';
+import { ISudukoState } from './Store/configureStore';
+import { checkedAction } from './Store/ActionCreators';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     puzzle: {
-      //border: "1px solid red",
-      margin: "0 auto",
-      width: "100vw",
-      maxWidth: "60vh",
-      height: "100vw",
-      maxHeight: "60vh",
-      display: "flex",
-      flexWrap: "wrap"
+      // border: "1px solid red",
+      margin: '0 auto',
+      width: '100vw',
+      maxWidth: '60vh',
+      height: '100vw',
+      maxHeight: '60vh',
+      display: 'flex',
+      flexWrap: 'wrap'
     }
   })
 );
@@ -27,7 +27,7 @@ function Puzzle(props: any) {
 
   function getBlocks() {
     const items = [];
-    for (let index = 0; index < 9; index++) {
+    for (let index = 0; index < 9; index += 1) {
       const numbers: BlockType = props.puzzle[index];
       items.push(
         <Block blockNumber={index + 1} key={index} numbers={numbers} />
@@ -39,16 +39,12 @@ function Puzzle(props: any) {
 }
 
 /* TODO use Partial, checked props is not neccecary here */
-const mapStateToProps = (store: ISudukoState): Pick<IBoardState, "puzzle"> => {
-  return {
+const mapStateToProps = (store: ISudukoState): Pick<BoardState, 'puzzle'> => ({
     puzzle: store.board.puzzle
-  };
-};
+  });
 
 const mapDispatchToProps = {
   checkedAction: typeof checkedAction
 };
-
-//export default connect(mapStateToProps, mapDispatchToProps)(Puzzle);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Puzzle);

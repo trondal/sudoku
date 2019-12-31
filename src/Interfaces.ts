@@ -5,7 +5,7 @@ interface FixedLengthArray<T extends any, L extends number> extends Array<T> {
 export type BlockType = FixedLengthArray<number, 9>;
 export type PuzzleType = FixedLengthArray<BlockType, 9>;
 
-export interface IBoardState {
+export interface BoardState {
   ident: SquareIdentifier;
   puzzle: PuzzleType;
   highlighted: number[];
