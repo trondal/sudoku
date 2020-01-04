@@ -1,4 +1,4 @@
-import { applyMiddleware, createStore, Store } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { combineReducers } from 'redux';
@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
 
 export type ISudukoState = ReturnType<typeof rootReducer>;
 
-export default function configureStore(): Store {
+export default function configureStore(): any {
   const middlewares = [thunkMiddleware];
   const middlewareEnhancer = applyMiddleware(...middlewares);
 
