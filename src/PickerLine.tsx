@@ -1,26 +1,25 @@
-import React from 'react';
-import Picker from './Picker';
-import { makeStyles, createStyles } from '@material-ui/styles';
-import { ISudukoState } from './Store/configureStore';
-import { BoardState } from './Interfaces';
-import { connect } from 'react-redux';
-import { checkedAction, setDigitAction } from './Store/ActionCreators';
+import Picker from "./Picker";
+import { makeStyles, createStyles } from "@mui/styles";
+import { ISudukoState } from "./Store/configureStore";
+import { BoardState } from "./Interfaces";
+import { connect } from "react-redux";
+import { checkedAction, setDigitAction } from "./Store/ActionCreators";
 
 const useStyles = makeStyles(() =>
   createStyles({
     pickerLine: {
-      margin: '1rem auto',
-      width: '100vw',
-      maxWidth: '60vh',
-      height: 'calc(60vw / 9)',
-      maxHeight: 'calc(60vh / 9)',
-      display: 'flex'
-    }
+      margin: "1rem auto",
+      width: "100vw",
+      maxWidth: "60vh",
+      height: "calc(60vw / 9)",
+      maxHeight: "calc(60vh / 9)",
+      display: "flex",
+    },
   })
 );
 
 type IPickerLineProps = ReturnType<typeof mapStateToProps> &
-  typeof mapDispatchToProps 
+  typeof mapDispatchToProps;
 
 function PickerLine(props: IPickerLineProps) {
   /* const onSquareClick = (ident: PuzzlePosition) => {
@@ -43,13 +42,13 @@ function PickerLine(props: IPickerLineProps) {
   );
 }
 
-const mapStateToProps = (store: ISudukoState): Pick<BoardState, 'ident'> => ({
-    ident: store.board.ident
-  });
+const mapStateToProps = (store: ISudukoState): Pick<BoardState, "ident"> => ({
+  ident: store.board.ident,
+});
 
 const mapDispatchToProps = {
   checkedAction,
-  setDigitAction
+  setDigitAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PickerLine);

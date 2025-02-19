@@ -1,5 +1,5 @@
-import { PuzzleType, SquareIdentifier, PuzzlePosition } from './Interfaces';
-import { PuzzleUtils } from './PuzzleUtils';
+import { PuzzleType, SquareIdentifier } from "./Interfaces";
+import { PuzzleUtils } from "./PuzzleUtils";
 
 let puzzle: PuzzleType;
 let displayed: PuzzleType;
@@ -14,7 +14,7 @@ beforeEach(() => {
     [0, 7, 0, 0, 6, 2, 0, 3, 8],
     [5, 0, 0, 0, 0, 0, 7, 0, 4],
     [0, 0, 0, 0, 0, 0, 0, 0, 6],
-    [7, 0, 0, 0, 4, 0, 0, 9, 0]
+    [7, 0, 0, 0, 4, 0, 0, 9, 0],
   ];
   displayed = [
     [0, 8, 0, 0, 0, 0, 0, 0, 0],
@@ -25,7 +25,7 @@ beforeEach(() => {
     [0, 9, 0, 0, 0, 4, 0, 3, 8],
     [5, 0, 0, 0, 0, 0, 7, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 4, 0],
-    [7, 0, 4, 0, 0, 6, 0, 9, 0]
+    [7, 0, 4, 0, 0, 6, 0, 9, 0],
   ];
   solution = [
     [6, 8, 5, 2, 4, 7, 9, 1, 3],
@@ -36,16 +36,15 @@ beforeEach(() => {
     [1, 9, 2, 6, 7, 4, 5, 3, 8],
     [5, 1, 8, 4, 3, 9, 7, 2, 6],
     [2, 6, 9, 7, 8, 1, 3, 4, 5],
-    [7, 3, 4, 5, 2, 6, 8, 9, 1]
+    [7, 3, 4, 5, 2, 6, 8, 9, 1],
   ];
 });
 
-describe('block is ok', () => {
+describe("block is ok", () => {
   /* it('can get all ids for a block', () => {
     const ids = PuzzleUtils.getIdOfAllDigitsInBlock(5);
     expect(ids).toStrictEqual([31, 32, 33, 40, 41, 42, 49, 50, 51]);
   }); */
-
   /* it("can get digits in a block", () => {
     let block = PuzzleUtils.getDigitsInBlock(puzzle, 1);
     expect(block).toStrictEqual([8, 2, 3, 9, 1]);
@@ -105,26 +104,26 @@ describe('block is ok', () => {
   }); */
 });
 
-describe('transform is ok', () => {
-  it('can transform puzzle', () => {
+describe("transform is ok", () => {
+  it("can transform puzzle", () => {
     const numbers = PuzzleUtils.transformPuzzle2Row(puzzle);
     expect(numbers).toStrictEqual(displayed);
   });
 });
 
-describe('can set digit', () => {
-  it('can get position by id', () => {
+describe("can set digit", () => {
+  it("can get position by id", () => {
     const ident: SquareIdentifier = {
       id: 47,
-      digit: 88
+      digit: 88,
     };
     const position = PuzzleUtils.getPositionById(ident.id);
     expect(position).toStrictEqual({ row: 3, column: 7 });
   });
 });
 
-describe('row is ok', () => {
-  it('gets row number by id', () => {
+describe("row is ok", () => {
+  it("gets row number by id", () => {
     let row = PuzzleUtils.getRowNumberById(1);
     expect(row).toBe(1);
 
@@ -140,16 +139,13 @@ describe('row is ok', () => {
     row = PuzzleUtils.getRowNumberById(81);
     expect(row).toBe(9);
   });
-  it('gets digits in a row', () => {
+  it("gets digits in a row", () => {
     /* let row = PuzzleUtils.getAllDigitsInRowById(puzzle, 1);
     expect(row).toStrictEqual([0, 8, 0, 0, 0, 0, 0, 0, 0]); */
-
     /* row = PuzzleUtils.getAllDigitsInRowById(puzzle, 9);
     expect(row).toStrictEqual([7, 0, 4, 0, 0, 6, 0, 9, 0]); */
-
     /* let row = PuzzleUtils.getDigitsInRowById(puzzle, 1);
     expect(row).toStrictEqual([8]); */
-
     /* row = PuzzleUtils.getDigitsInRowById(puzzle, 9);
     expect(row).toStrictEqual([7, 4, 6, 9]); */
   });
@@ -165,8 +161,8 @@ describe('row is ok', () => {
   }); */
 });
 
-describe('column is ok', () => {
-    it('gets column number by id', () => {
+describe("column is ok", () => {
+  it("gets column number by id", () => {
     let column = PuzzleUtils.getColumnNumberById(1);
     expect(column).toBe(1);
 
@@ -182,10 +178,9 @@ describe('column is ok', () => {
     column = PuzzleUtils.getColumnNumberById(81);
     expect(column).toBe(9);
   });
-  it('gets all digits in a column', () => {
+  it("gets all digits in a column", () => {
     /* let column = PuzzleUtils.getAllDigitsInColumn(puzzle, 1);
     expect(column).toStrictEqual([0, 0, 9, 8, 3, 0, 5, 0, 7]); */
-
     /* column = PuzzleUtils.getAllDigitsInColumn(puzzle, 9);
     expect(column).toStrictEqual([0, 0, 0, 0, 2, 8, 0, 0, 0]); */
   });

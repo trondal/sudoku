@@ -1,23 +1,12 @@
-import { applyMiddleware, createStore } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { combineReducers } from 'redux';
-import BoardReducer from './BoardReducer';
+import { createStore, combineReducers } from "redux";
+import BoardReducer from "./BoardReducer";
 
 const rootReducer = combineReducers({
-  board: BoardReducer
+  board: BoardReducer,
 });
 
 export type ISudukoState = ReturnType<typeof rootReducer>;
 
-export default function configureStore(): any {
-  const middlewares = [thunkMiddleware];
-  const middlewareEnhancer = applyMiddleware(...middlewares);
+const store = createStore(rootReducer);
 
-  const enhancers = [middlewareEnhancer];
-  const composedEnhancers = composeWithDevTools(...enhancers);
-
-  const store = createStore(rootReducer, composedEnhancers);
-
-  return store;
-}
+export { store };

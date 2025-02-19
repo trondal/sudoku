@@ -1,24 +1,22 @@
-import React from 'react';
-import Block from './Block';
-import { makeStyles } from '@material-ui/styles';
-import { createStyles } from '@material-ui/core';
-import { connect } from 'react-redux';
-import { BlockType, BoardState } from './Interfaces';
-import { ISudukoState } from './Store/configureStore';
-import { checkedAction } from './Store/ActionCreators';
+import Block from "./Block";
+import { makeStyles, createStyles } from "@mui/styles";
+import { connect } from "react-redux";
+import { BlockType, BoardState } from "./Interfaces";
+import { ISudukoState } from "./Store/configureStore";
+import { checkedAction } from "./Store/ActionCreators";
 
 const useStyles = makeStyles(() =>
   createStyles({
     puzzle: {
       // border: "1px solid red",
-      margin: '0 auto',
-      width: '100vw',
-      maxWidth: '60vh',
-      height: '100vw',
-      maxHeight: '60vh',
-      display: 'flex',
-      flexWrap: 'wrap'
-    }
+      margin: "0 auto",
+      width: "100vw",
+      maxWidth: "60vh",
+      height: "100vw",
+      maxHeight: "60vh",
+      display: "flex",
+      flexWrap: "wrap",
+    },
   })
 );
 
@@ -39,12 +37,12 @@ function Puzzle(props: any) {
 }
 
 /* TODO use Partial, checked props is not neccecary here */
-const mapStateToProps = (store: ISudukoState): Pick<BoardState, 'puzzle'> => ({
-    puzzle: store.board.puzzle
-  });
+const mapStateToProps = (store: ISudukoState): Pick<BoardState, "puzzle"> => ({
+  puzzle: store.board.puzzle,
+});
 
 const mapDispatchToProps = {
-  checkedAction: typeof checkedAction
+  checkedAction: typeof checkedAction,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Puzzle);

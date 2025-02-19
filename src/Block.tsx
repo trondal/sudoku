@@ -1,27 +1,25 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/styles';
-import { createStyles } from '@material-ui/core';
-import Square from './Square';
-import { BlockType } from './Interfaces';
-import { PuzzleUtils } from './PuzzleUtils';
+import { makeStyles, createStyles } from "@mui/styles";
+import Square from "./Square";
+import { BlockType } from "./Interfaces";
+import { PuzzleUtils } from "./PuzzleUtils";
 
 const useStyles = makeStyles(() =>
   createStyles({
     block: {
-      width: 'calc(100% / 3)',
-      height: 'calc(100% / 3)',
-      borderTop: '2px solid black',
-      borderLeft: '2px solid black',
-      '&:nth-child(3n)': {
-        borderRight: '2px solid black'
+      width: "calc(100% / 3)",
+      height: "calc(100% / 3)",
+      borderTop: "2px solid black",
+      borderLeft: "2px solid black",
+      "&:nth-child(3n)": {
+        borderRight: "2px solid black",
       },
-      '&:nth-child(7), &:nth-child(8), &:nth-child(9)': {
-        borderBottom: '2px solid black'
+      "&:nth-child(7), &:nth-child(8), &:nth-child(9)": {
+        borderBottom: "2px solid black",
       },
-      boxSizing: 'border-box',
-      display: 'flex',
-      flexWrap: 'wrap'
-    }
+      boxSizing: "border-box",
+      display: "flex",
+      flexWrap: "wrap",
+    },
   })
 );
 
@@ -42,7 +40,7 @@ function Block(props: BlockProps) {
           digit={props.numbers[index]}
           highlight={false}
           key={index}
-          />
+        />
       );
     }
     return items;

@@ -1,41 +1,38 @@
-import React from 'react';
-import { createMuiTheme, Container } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/core/styles';
-import Header from './Header';
-import Footer from './Footer';
-import Content from './Content';
-import { red } from '@material-ui/core/colors';
-import { Provider } from 'react-redux';
-import configureStore from './Store/configureStore';
+import { createMuiTheme, Container } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import Header from "./Header";
+import Footer from "./Footer";
+import Content from "./Content";
+//import { red } from "@mui/material/colors";
+import { Provider } from "react-redux";
+import { store } from "./Store/configureStore";
 
 let theme = createMuiTheme({
   palette: {},
   typography: {
-    fontFamily: ['Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(',')
-  }
+    fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
+  },
 });
 
 theme = {
   ...theme,
-  overrides: {
+  /* overrides: {
     MuiContainer: {
       root: {
-        height: '100vh',
-        padding: '0',
-        margin: '0',
-        display: 'flex',
-        flexFlow: 'column',
-        [theme.breakpoints.down('xl')]: {
+        height: "100vh",
+        padding: "0",
+        margin: "0",
+        display: "flex",
+        flexFlow: "column",
+        [theme.breakpoints.down("xl")]: {
           backgroundColor: red[900], // should no be seen
-          padding: '0',
-          margin: '0'
-        }
-      }
-    }
-  }
+          padding: "0",
+          margin: "0",
+        },
+      },
+    },
+  }, */
 };
-
-const store = configureStore();
 
 function Sudoku() {
   return (
