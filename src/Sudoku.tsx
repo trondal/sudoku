@@ -1,13 +1,12 @@
-import { createMuiTheme, Container } from "@mui/material";
+import { createTheme, Container } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import Header from "./Header";
 import Footer from "./Footer";
 import Content from "./Content";
-//import { red } from "@mui/material/colors";
 import { Provider } from "react-redux";
 import { store } from "./Store/configureStore";
 
-let theme = createMuiTheme({
+let theme = createTheme({
   palette: {},
   typography: {
     fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
